@@ -97,7 +97,7 @@ function Search() {
     
     
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    
         <GlobalStateProvider>
             <main className='dark:bg-black'>
                 <Navbar/>
@@ -184,8 +184,14 @@ function Search() {
             
             </main>
         </GlobalStateProvider>
-    </Suspense>
+    
   )
 }
 
-export default Search;
+export default function SearchPage(){
+    return(
+        <Suspense fallback={<p>Loading...</p>}>
+            <Search/>
+        </Suspense>
+    )
+};
