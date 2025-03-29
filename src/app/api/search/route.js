@@ -28,7 +28,9 @@ export async function POST(request) {
         const response = await fetch(formatedUrl)
         console.log(formatedUrl)
         const result = await response.json()
-        const data = result.jobs
+        const data = result['jobs']
+
+        console.log(data)
 
 
         return NextResponse.json({data:data, totalPages: Math.ceil(result['job-count']/limit)}, {status: 200})
