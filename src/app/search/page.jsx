@@ -11,6 +11,8 @@ import Image from 'next/image';
 import Jobs from '../components/Jobs';
 import Button from '../components/Button';
 import { useRouter } from 'next/navigation';
+import { Suspense } from 'react';
+
 
 function Search() {
     
@@ -200,4 +202,10 @@ function Search() {
   )
 }
 
-export default Search
+export default function SearchPage() {
+    return (
+      <Suspense fallback={<p>Loading...</p>}>
+        <Search />
+      </Suspense>
+    )
+  }
