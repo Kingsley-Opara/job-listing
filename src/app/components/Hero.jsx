@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { IoLocationOutline } from "react-icons/io5";
-import illustration from "@/app/images/illustration.png"
+import illustration from "@/app/images/Illustration.png"
 import briefcaseDuotone from "@/app/images/briefcase-duotone.png"
 import icon from "@/app/images/icon.png"
 import Image from 'next/image';
