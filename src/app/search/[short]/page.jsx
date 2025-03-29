@@ -46,7 +46,7 @@ function Page() {
   return (
     <GlobalStateProvider>
 
-        <main className='dark:bg-black'>
+        <main className='dark:bg-black text-black dark:text-white'>
                 
             <Navbar/>
             <div className='flex place-content-between bg-gray-200 p-5 dark:bg-gray-700 dark:text-white'>
@@ -67,20 +67,20 @@ function Page() {
                             <div>
                                 <div className='flex space-x-5'>
                                     <Image src={info['company_logo']} height={70} width={70} className="" alt='logo'/>
-                                    <div className='dark:text-white'>
-                                        <p className='text-2xl text-bold dark:text-white'>{info.title}</p>
+                                    <div className='dark:text-white text-black'>
+                                        <p className='text-2xl text-bold dark:text-white text-black'>{info.title}</p>
                                         
                                         
                                         <div className='flex space-x-3'>
                                             
-                                            <p className='text-gray-400 font-light mt-2 dark:text-white'>
+                                            <p className='text-gray-900 font-light mt-2 dark:text-white'>
                                                 at <span>{info["company_name"]}</span> 
                                                 
                                             </p>
                                             <div className='bg-green-400 w-24 h-8 text-center text-white'>
                                                 <p className='pt-2'>{info['job_type']}</p>
                                             </div>
-                                            <div className='bg-pink-100 w-18 h-6 text-center text-red-300 rounded-3xl p-1 mt-2'>
+                                            <div className='bg-pink-100 w-18 h-6 text-center text-red-400 rounded-3xl p-1 mt-2'>
                                                 <p className='font-light text-sm'>Featured</p>
                                             </div>
                                         </div>
@@ -90,15 +90,16 @@ function Page() {
 
                                 </div>
                                 
-                                <div className='mt-10 p-5 dark:text-white '>
+                                <div className='mt-10 p-5 dark:text-white text-black'>
                                     <h5 className='text-2xl font-medium'>Job Description</h5>
 
                                     <div className='prose max-w-none p-10 bg-white shadow-md rounded-lg h-fit
-                                    dark:bg-black text-white
+                                    dark:bg-black text-black dark:text-white
                                     ' >
                                         <div 
                                             dangerouslySetInnerHTML={{__html: info.description}}
-                                            className='mt-2 flex flex-col space-y-5 dark:text-white'
+                                            className='mt-2 flex flex-col space-y-5 dark:text-white 
+                                            text-black dark:bg-black'
                                     
                                         />
 
