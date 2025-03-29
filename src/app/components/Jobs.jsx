@@ -56,7 +56,7 @@ function Jobs({id, title, handleClickAction, salary, name, jobType, location, lo
         <div
             key={id} 
             className=' mt-3 shadow-2xl shadow-white bg-yellow-50 p-8 dark:bg-gray-800 
-            dark:shadow-black dark:text-white'>
+            dark:shadow-black dark:text-white text-black'>
                 <div>
                     <div className='flex place-content-between'>
                         <div

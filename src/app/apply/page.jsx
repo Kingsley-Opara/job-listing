@@ -71,7 +71,7 @@ function Page() {
     }
   return (
     <GlobalStateProvider>
-        <div>
+        <div className='dark:bg-black dark:text-white text-black'>
             <Navbar/>
 
             <div className='bg-gray-300 w-full h-full p-5'>
@@ -80,7 +80,7 @@ function Page() {
             
                 <form
                 onSubmit={(e)=>{handleSubmit(e)}} 
-                className="max-w-md mx-auto bg-white shadow-md rounded-lg mt-10 p-8">
+                className="max-w-md mx-auto bg-white shadow-md rounded-lg mt-10 p-8 dark:bg-gray-900 dark:text-white">
                     <div className="mb-5">
                         <label htmlFor="Full Name" 
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>

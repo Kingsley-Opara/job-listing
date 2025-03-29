@@ -99,7 +99,7 @@ function Search() {
   return (
     
         <GlobalStateProvider>
-            <main className='dark:bg-black'>
+            <main className='dark:bg-black text-black dark:text-white'>
                 <Navbar/>
                 <div className='flex place-content-between bg-gray-200 p-5 dark:bg-gray-700 dark:text-white'>
                     <Link href={'/search'}>Find Job</Link>
