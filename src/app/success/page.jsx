@@ -5,7 +5,7 @@ import { GlobalStateProvider } from '../context'
 
 function Page() {
   return (
-    <div className='dark:bg-black text-black dark:text-white'>
+    <div className='dark:bg-black text-black dark:text-white bg-white'>
       <GlobalStateProvider>
         <Navbar/>
         <div className="flex items-center justify-center h-screen">

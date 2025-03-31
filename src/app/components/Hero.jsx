@@ -12,7 +12,6 @@ import { useRouter } from 'next/navigation';
 
 function Hero() {
     const {data} = useGlobalContext()
-    console.log(data)
     const [jobCount, setJobCount] = useState(0)
     const [companyCount, setCompanyCount] = useState(0)
     const [candidateCount, setCandidateCount] = useState(0)

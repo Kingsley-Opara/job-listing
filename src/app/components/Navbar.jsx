@@ -6,13 +6,19 @@ import briefcase from "@/app/images/briefcase.png"
 import { CiSearch, CiLight, CiDark } from "react-icons/ci";
 import { useGlobalContext } from '../context'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 
 function Navbar() {
+    const router = useRouter()
+
     const [countries, setCountries] = useState([])
 
     const [selectedCountry, setSelectedCountry] = useState("")
 
     const [imageUrl, setImageUrl] = useState('')
+
+    const [searchJobTitle, setSearchJobTitle] = useState("")
+    
 
     const{theme, toggleTheme} = useGlobalContext()
     const handleClick = () =>{
@@ -23,6 +29,22 @@ function Navbar() {
             toggleTheme()
         }
     }
+
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+
+
+        const name = searchJobTitle.trim()
+        const location = selectedCountry.trim()
+        const fullJobSearch = `${name} ${location}`
+
+        if (name){
+            router.push(`/search?search=${encodeURIComponent(fullJobSearch)}`)
+            
+        }
+
+    }
+
     useEffect(()=>{
         const fetchCountries = async function (){
             const response = await fetch("/api/countries", {next:{revalidate:86400}})
@@ -50,7 +72,7 @@ function Navbar() {
 
         </div>
         <div className='max-md:hidden'>
-            <form action="" >
+            <form action=""  onSubmit={(e)=>{handleSubmit(e)}}>
                 <div 
                 className='flex'>
                     <div className='flex h-10 w-[12rem] rounded-2xl 
@@ -79,19 +101,26 @@ function Navbar() {
                     </div>
                     <div className='ml-3 h-10 w-[25rem] rounded-2xl border-2 border-gray-200 p-2 flex flex-space-x-2'>
                         <input type="text" 
+                        value={searchJobTitle}
                         className='w-full border-2 border-white focus:border-o 
                         focus:border-white transition-all' 
                         placeholder='Job Title, Keyword, company'
+                        onChange={(e)=>{setSearchJobTitle(e.target.value)}}
                         />
-                        <CiSearch className='cursor-pointer text-xl'/>
+                        <button type='submit'><CiSearch className='cursor-pointer text-xl'/></button>
+                        
+                        
                     </div>
+                    
                 </div>
+                
+                
 
             </form>
 
 
         </div>
-        <div className='flex space-x-4 max-lg:hidden'>
+        <div className='flex space-x-4 md:hidden lg:flex max-sm:hidden'>
             <div>
                 <button 
                 className='cursor-pointer p-2 h-10 text-blue-500 transition-all duration-300

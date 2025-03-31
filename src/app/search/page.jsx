@@ -138,7 +138,7 @@ function Search() {
   return (
     
         <GlobalStateProvider>
-            <main className='dark:bg-black text-black dark:text-white'>
+            <main className='dark:bg-black text-black dark:text-white bg-white h-[200vh]'>
                 <Navbar/>
                 <div className='flex place-content-between bg-gray-200 p-5 dark:bg-gray-700 dark:text-white'>
                     <Link href={'/search'}>Find Job</Link>
@@ -185,8 +185,8 @@ function Search() {
                     </form>
                 </div>
                 <div>
-                    <div className='bg-white grid grid-cols-2 gap-4 p-10 max-md:grid-cols-1 dark:bg-black'>
-                        {Array.isArray(searchedJobs) && searchedJobs.length > 0 && searchedJobs.map((job) =>{
+                    <div className='bg-white grid grid-cols-2 gap-4 p-10 max-md:grid-cols-1 dark:bg-black min-h-full'>
+                        {Array.isArray(searchedJobs) && searchedJobs.length > 0 ? searchedJobs.map((job) =>{
                             return(
                                 <div 
                                     className='cursor-pointer'
@@ -212,7 +212,7 @@ function Search() {
         
                             )
                             
-                        })}
+                        }): <p className='text-xl text-black text-center dark:text-white'>{"No job matched your search result"}</p>}
                     </div>
                 </div>
 
