@@ -98,8 +98,7 @@ function Page() {
                                     ' >
                                         <div 
                                             dangerouslySetInnerHTML={{__html: info.description}}
-                                            className='mt-2 flex flex-col space-y-5 dark:text-white 
-                                            text-black dark:bg-black'
+                                            className='mt-2 flex flex-col space-y-5 '
                                     
                                         />
 

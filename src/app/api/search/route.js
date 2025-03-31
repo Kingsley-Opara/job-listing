@@ -21,7 +21,7 @@ export async function POST(request) {
     if (search){
         const baseUrl = "https://remotive.com/api/remote-jobs"
 
-        const params = new URLSearchParams({"search": search, "limit": limit, "page": page})
+        const params = new URLSearchParams({"search": search})
 
         const formatedUrl = `${baseUrl}?${params.toString()}`
 
@@ -30,7 +30,7 @@ export async function POST(request) {
         const result = await response.json()
         const data = result['jobs']
 
-        console.log(data)
+        // console.log(data)
 
 
         return NextResponse.json({data:data, totalPages: Math.ceil(result['job-count']/limit)}, {status: 200})

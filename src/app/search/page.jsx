@@ -22,13 +22,16 @@ function Search() {
     const [searchJobTitle, setSearchJobTitle] = useState("")
     const [searchJobLocation, setSearchJobLocation] = useState("")
     const [jobPage, setJobPage] = useState(1)
+    const [maxPage, setMaxPage] = useState(1)
 
     const router = useRouter()
 
-    const currentPage = Number(page) || 1
+    let currentPage = Number(page) || 1
+
+    
 
     const getSearchData = async function(page = 1, search="") {
-        const response = await fetch(`/api/search?page=${page}`, {
+        const response = await fetch(`/api/search`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ "search": search })
@@ -54,9 +57,15 @@ function Search() {
 
         if (name){
             const{dataSearch, totalPages} = await getSearchData(currentPage, fullJobSearch)
-            setSearchJobs(dataSearch)
+           
             setJobPage(totalPages)
             // console.log(data)
+
+            setMaxPage(Math.ceil(dataSearch ? dataSearch.length : 10/10))
+
+            currentPage = currentPage >= maxPage ? currentPage : 1 
+
+            dataSearch && setSearchJobs(dataSearch.slice(Math.ceil((currentPage-1) * 10), Math.ceil(currentPage* 10)))
             
             
         }
@@ -80,19 +89,49 @@ function Search() {
             const getData = async () => {
                 const { data, totalPages } = await getSearchData(currentPage, query);
                 setJobPage(totalPages);
-                setSearchJobs(data);
+                
+
+                setMaxPage(Math.ceil(data ? data.length : 10/10))
+
+                // setCurrentPage(currentPage >= maxPage ? currentPage : 1) 
+                currentPage = currentPage >= maxPage ? currentPage : 1 
+
+                data && setSearchJobs(data.slice(Math.ceil((currentPage-1) * 10), Math.ceil(currentPage* 10)))
 
                 // console.log(dataSearch)
             };
             getData();
-        } else {
+
+            
+
+        }
+        else if(!searchedJobs || searchedJobs == [] || query === ""){
             const fetchAllData = async () => {
                 const res = await fetch('/api/jobs');
                 const data = await res.json();
                 setSearchJobs(data.slice(0, 10));
             };
             fetchAllData();
+            
+            
+        } 
+        else {
+            const fetchAllData = async () => {
+                const res = await fetch('/api/jobs');
+                const data = await res.json();
+
+                setMaxPage(Math.ceil(data ? data.length : 10/10))
+
+                // setCurrentPage(currentPage >= maxPage ? currentPage : 1) 
+
+                currentPage = currentPage >= maxPage ? currentPage : 1 
+
+                data && setSearchJobs(data.slice(Math.ceil((currentPage-1) * 10), Math.ceil(currentPage* 10)))
+            };
+            fetchAllData();
+            
         }
+        
     }, [query, currentPage]); 
     
     

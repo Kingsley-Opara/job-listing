@@ -74,9 +74,9 @@ function Page() {
         <div className='dark:bg-black dark:text-white text-black'>
             <Navbar/>
 
-            <div className='bg-gray-300 w-full h-full p-5'>
+            <div className='bg-gray-300 w-full h-full p-5 dark:bg-black'>
 
-                <p className='text-2xl font-serif text-center'>Apply For a Job Today</p>
+                <p className='text-2xl font-serif text-center dark:text-white text-black'>Apply For a Job Today</p>
             
                 <form
                 onSubmit={(e)=>{handleSubmit(e)}} 

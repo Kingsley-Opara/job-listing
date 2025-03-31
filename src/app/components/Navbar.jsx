@@ -5,6 +5,7 @@ import Image from 'next/image'
 import briefcase from "@/app/images/briefcase.png"
 import { CiSearch, CiLight, CiDark } from "react-icons/ci";
 import { useGlobalContext } from '../context'
+import Link from 'next/link'
 
 function Navbar() {
     const [countries, setCountries] = useState([])
@@ -38,7 +39,7 @@ function Navbar() {
     }, [])
 
   return (
-    <nav className='bg-white p-4 w-full px-20 flex space-x-20 dark:bg-black dark:text-white'>
+    <nav className='bg-white p-4 w-full px-16 flex space-x-12 dark:bg-black dark:text-white'>
         <div className='flex space-x-2 text-black dark:text-white'>
             <Image src={briefcase} alt='The company logo' height={30} width={30} 
             className="cursor-pointer"
@@ -76,7 +77,7 @@ function Navbar() {
 
                     </select>
                     </div>
-                    <div className='ml-5 h-10 w-[25rem] rounded-2xl border-2 border-gray-200 p-2 flex flex-space-x-2'>
+                    <div className='ml-3 h-10 w-[25rem] rounded-2xl border-2 border-gray-200 p-2 flex flex-space-x-2'>
                         <input type="text" 
                         className='w-full border-2 border-white focus:border-o 
                         focus:border-white transition-all' 
@@ -90,12 +91,12 @@ function Navbar() {
 
 
         </div>
-        <div className='flex space-x-8 max-lg:hidden'>
+        <div className='flex space-x-4 max-lg:hidden'>
             <div>
                 <button 
                 className='cursor-pointer p-2 h-10 text-blue-500 transition-all duration-300
                 bg-white w-28 rounded-2xl border-2 border-gray-200 hover:text-white hover:bg-blue-500'>
-                    Sign In
+                    <Link href={'/search'} className=''>Search</Link>
                 </button>
             </div>
             <div>
@@ -109,10 +110,12 @@ function Navbar() {
 
         </div>
 
-        <div>
+        <div className='ml-auto flex space-x-3'>
             {theme === "dark"?
             <CiLight className='text-3xl text-black cursor-pointer dark:text-white' onClick={()=>{handleClick()}}/>:
             <CiDark className='text-3xl text-black cursor-pointer dark:text-white' onClick={()=>{handleClick()}}/>}
+
+            
         </div>
 
 
